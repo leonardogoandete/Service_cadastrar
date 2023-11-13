@@ -3,37 +3,43 @@ package cadastro.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
-import lombok.*;
+import cadastro.enumerados.Role;
 
-@NoArgsConstructor
 @Entity
-@Table(name = "Instituições")
-public class CadastroPJ extends PanacheEntity{
-
+public class CadastroPJ extends Cadastro{
+    
     @NotEmpty
     @NotBlank
     private String cnpj;
-    @NotEmpty
-    @NotBlank
-    private String nome;
-    @NotEmpty
-    @NotBlank
-    private String endereco;
-    @NotEmpty
-    @NotBlank
-    private String email;
-    @NotEmpty
-    @NotBlank
-    private String senha;
 
-    public CadastroPJ(String cnpj, String nome, String endereco, String email, String senha) {
+    @NotEmpty
+    @NotBlank
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public CadastroPJ() {
+    }
+
+    public CadastroPJ(String nome, String endereco, String email, String senha, String cnpj, Role role) {
+        super(nome, endereco, email, senha);
         this.cnpj = cnpj;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.email = email;
-        this.senha = senha;
+        this.role = role;
+    }
+
+    private String getCnpj() {
+        return cnpj;
+    }
+
+    private void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    private Role getRole() {
+        return role;
+    }
+
+    private void setRole(Role role) {
+        this.role = role;
     }
     
 }
