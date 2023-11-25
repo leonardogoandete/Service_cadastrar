@@ -1,0 +1,107 @@
+version: '3.2'
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "14268:14268" # Receive legacy OpenTracing traces, optional
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver, not yet used by Quarkus, optional
+      - "14250:14250" # Receive from external otel-collector, optional
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+
+  elasticsearch:
+    image: docker.io/elastic/elasticsearch:7.16.3
+    ports:
+      - "9200:9200"
+    environment:
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m" # Use half of the available RAM
+      discovery.type: "single-node" # Disable production mode
+
+  mongo:
+    image: mongo:5.0
+
+  graylog:
+    image: graylog/graylog:5.1
+    ports:
+      - "9000:9000" # HTTP
+      - "12201:12201/udp" # GELF UDP
+      - "1514:1514" # GELF TCP
+    environment:
+      GRAYLOG_HTTP_EXTERNAL_URI: "http://127.0.0.1:9000/"
+      # CHANGE ME (must be at least 16 characters)!
+      GRAYLOG_PASSWORD_SECRET: "forpasswordencryption"
+      # Password: admin
+      GRAYLOG_ROOT_PASSWORD_SHA2: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+    depends_on:
+      - elasticsearch
+      - mongo
+
+  prometheus:
+    image: prom/prometheus
+    user: root
+    container_name: prometheus
+    hostname: prometheus
+    restart: unless-stopped
+    volumes:
+      - ./config:/etc/prometheus
+      - ./data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    volumes:
+      - ./config/prometheus_ds.yml:/etc/grafana/provisioning/datasources/prometheus_ds.yml
+    environment:
+      -  GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: quarkus
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hibernate
+
+  postagens-api:
+    image: leogoandete/postagens:v1.1.0
+    environment:
+      QUARKUS_DATASOURCE_USERNAME: postgres
+      QUARKUS_DATASOURCE_PASSWORD: hibernate
+      QUARKUS_DATASOURCE_DB_KIND: postgresql
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/quarkus
+      #JAEGER ENV
+      QUARKUS_JAEGER_ENDPOINT: http://jaeger:4317
+      #GRAYLOG
+      QUARKUS_LOG_HANDLER_GELF_HOST: graylog
+      QUARKUS_LOG_HANDLER_GELF_PORT: 12201
+    depends_on:
+      - postgres
+      - jaeger
+      - graylog
+
+# add projeto front
+  doasanguepoa-front:
+    image: leogoandete/doasanguepoa-front:v1.2.0
+    environment:
+      REACT_APP_URL_API_LOGIN: 
+      REACT_APP_URL_API_POSTAGENS: postagens-api:8081
+      REACT_APP_URL_API_CADASTRO: localhost:8085
+    ports:
+      - 8080:3000
+    depends_on:
+      - postagens-api
+
+networks:
+  graylog:
+    driver: bridge

@@ -14,5 +14,9 @@ public class PFRepository implements PanacheRepository<CadastroPF> {
         persist(cadastroPF);
         return cadastroPF;
     }
+
+    public CadastroPF findCpf(String cpf) {
+        return find("cpf", cpf).firstResult();
+    }
     
 }

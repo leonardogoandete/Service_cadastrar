@@ -1,0 +1,12 @@
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/model/CadastroPF.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/validadores/ValidaDoc.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/validadores/ValidaEndereco.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/repository/PFRepository.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/dto/CadastroDTO.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/model/CadastroPJ.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/validadores/ValidaEmail.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/model/Cadastro.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/repository/PJRepository.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/validadores/ValidaNome.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/services/Cadastro.java
+/home/leo/dev/Service_cadastrar/src/main/java/cadastro/enumerados/Role.java

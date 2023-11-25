@@ -96,6 +96,22 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-openapi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-elytron-security-common</artifactId>
+    </dependency>
+    <dependency> <groupId>br.com.caelum.stella</groupId> 
+    <artifactId>caelum-stella-core</artifactId> 
+    <version>2.1.2</version> 
+</dependency>
+<dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-logging-gelf</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
