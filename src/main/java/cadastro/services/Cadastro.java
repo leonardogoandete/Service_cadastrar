@@ -2,7 +2,7 @@ package cadastro.services;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.logging.*;
 import org.eclipse.microprofile.metrics.Histogram;
 import org.eclipse.microprofile.metrics.MetricUnits;
 import org.eclipse.microprofile.metrics.annotation.*;
@@ -35,6 +35,8 @@ public class Cadastro {
 
     private long maiorExecucaoPj;
 
+    final Logger logger = Logger.getLogger(Cadastro.class.getName());
+
     @POST
     @Path("/instituicao")
     @Transactional
@@ -44,39 +46,44 @@ public class Cadastro {
     @Timed(name = "timer", description = "tempo que leva para executar o serviço", unit = MetricUnits.MICROSECONDS)
     @JsonPropertyOrder({"cnpj", "nome", "endereco", "email", "senha"})
     public Response cadastroPJ(CadastroDTO cadastroDTO){
-
+      
         long startTime = System.currentTimeMillis();
 
         String senha = BcryptUtil.bcryptHash(cadastroDTO.senha());
 
         if(pjRepository.findCnpj(cadastroDTO.documento()) != null){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"CNPJ existente");
             response.put("error", "CNPJ existente");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
-                    .build();
-        }else if(ValidaDoc.validaCnpj(cadastroDTO.documento()) == false){
+                    .build();    
+        }else if(ValidaDoc.validaCnpj(cadastroDTO.documento())){
             Map<String, String> response = new HashMap<>();
+             logger.log(Level.WARNING,"CNPJ inválido");
             response.put("error", "CNPJ inválido");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaNome.validarNome(cadastroDTO.nome()) == false){
+        }else if(ValidaNome.validarNome(cadastroDTO.nome())){
             Map<String, String> response = new HashMap<>();
+             logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco()) == false){
+        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
             Map<String, String> response = new HashMap<>();
+             logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEmail.validarEmail(cadastroDTO.email()) == false){
+        }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else{
@@ -125,32 +132,37 @@ public class Cadastro {
 
         if(pfRepository.findCpf(cadastroDTO.documento()) != null){
             Map<String, String> response = new HashMap<>();
+             logger.log(Level.WARNING,"CPF existente");
             response.put("error", "CPF existente");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaDoc.validaCpf(cadastroDTO.documento()) == false){
+        }else if(ValidaDoc.validaCpf(cadastroDTO.documento())){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"CPF inválido");
             response.put("error", "CPF inválido");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaNome.validarNome(cadastroDTO.nome()) == false){
+        }else if(ValidaNome.validarNome(cadastroDTO.nome())){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco()) == false){
+        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEmail.validarEmail(cadastroDTO.email()) == false){
+        }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
             Map<String, String> response = new HashMap<>();
+            logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
-            return Response.status(Response.Status.UNAUTHORIZED)
+            return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else{
