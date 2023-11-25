@@ -59,25 +59,25 @@ public class Cadastro {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();    
-        }else if(ValidaDoc.validaCnpj(cadastroDTO.documento())){
+        }else if(!ValidaDoc.validaCnpj(cadastroDTO.documento())){
              logger.log(Level.WARNING,"CNPJ inválido");
             response.put("error", "CNPJ inválido");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaNome.validarNome(cadastroDTO.nome())){
+        }else if(!ValidaNome.validarNome(cadastroDTO.nome())){
              logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
+        }else if(!ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
              logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
+        }else if(!ValidaEmail.validarEmail(cadastroDTO.email())){
             logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
             return Response.status(Response.Status.BAD_REQUEST)
@@ -133,25 +133,25 @@ public class Cadastro {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaDoc.validaCpf(cadastroDTO.documento())){
+        }else if(!ValidaDoc.validaCpf(cadastroDTO.documento())){
             logger.log(Level.WARNING,"CPF inválido");
             response.put("error", "CPF inválido");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaNome.validarNome(cadastroDTO.nome())){
+        }else if(!ValidaNome.validarNome(cadastroDTO.nome())){
             logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
+        }else if(!ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
             logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
-        }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
+        }else if(!ValidaEmail.validarEmail(cadastroDTO.email())){
             logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
             return Response.status(Response.Status.BAD_REQUEST)
