@@ -36,6 +36,8 @@ public class Cadastro {
     private long maiorExecucaoPj;
 
     final Logger logger = Logger.getLogger(Cadastro.class.getName());
+    
+    Map<String, String> response = new HashMap<>();
 
     @POST
     @Path("/instituicao")
@@ -52,35 +54,30 @@ public class Cadastro {
         String senha = BcryptUtil.bcryptHash(cadastroDTO.senha());
 
         if(pjRepository.findCnpj(cadastroDTO.documento()) != null){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"CNPJ existente");
             response.put("error", "CNPJ existente");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();    
         }else if(ValidaDoc.validaCnpj(cadastroDTO.documento())){
-            Map<String, String> response = new HashMap<>();
              logger.log(Level.WARNING,"CNPJ inválido");
             response.put("error", "CNPJ inválido");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaNome.validarNome(cadastroDTO.nome())){
-            Map<String, String> response = new HashMap<>();
              logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
-            Map<String, String> response = new HashMap<>();
              logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
             return Response.status(Response.Status.BAD_REQUEST)
@@ -131,35 +128,30 @@ public class Cadastro {
         String senha = BcryptUtil.bcryptHash(cadastroDTO.senha());
 
         if(pfRepository.findCpf(cadastroDTO.documento()) != null){
-            Map<String, String> response = new HashMap<>();
              logger.log(Level.WARNING,"CPF existente");
             response.put("error", "CPF existente");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaDoc.validaCpf(cadastroDTO.documento())){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"CPF inválido");
             response.put("error", "CPF inválido");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaNome.validarNome(cadastroDTO.nome())){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"Formato de nome inválido: use apenas letras");
             response.put("error", "Formato de nome inválido: use apenas letras");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaEndereco.validarEndereco(cadastroDTO.endereco())){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"Formato de endereço inválido: use apenas letras e números");
             response.put("error", "Formato de endereço inválido: use apenas letras e números");
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(response)
                     .build();
         }else if(ValidaEmail.validarEmail(cadastroDTO.email())){
-            Map<String, String> response = new HashMap<>();
             logger.log(Level.WARNING,"Formato de email inválido");
             response.put("error", "Formato de email inválido");
             return Response.status(Response.Status.BAD_REQUEST)
