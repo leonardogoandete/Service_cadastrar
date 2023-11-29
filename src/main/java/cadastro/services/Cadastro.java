@@ -43,7 +43,7 @@ public class Cadastro {
     @Path("/instituicao")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Counted(name = "contador", description = "o número de execuções do serviço cadastro")
     @Timed(name = "timer", description = "tempo que leva para executar o serviço", unit = MetricUnits.MICROSECONDS)
     @JsonPropertyOrder({"cnpj", "nome", "endereco", "email", "senha"})
@@ -117,7 +117,7 @@ public class Cadastro {
     @Path("/usuario")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Counted(name = "contador", description = "o número de execuções do serviço cadastro")
     @Timed(name = "timer", description = "tempo que leva para executar o serviço", unit = MetricUnits.MICROSECONDS)
     @JsonPropertyOrder({"cnpj", "nome", "endereco", "email", "senha"})
