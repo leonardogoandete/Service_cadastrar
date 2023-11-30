@@ -9,8 +9,10 @@ public final class ValidaDoc {
 
     }
     
+    //Teste de CPF
     public static boolean validaCpf(String cpf) { 
         CPFValidator cpfValidator = new CPFValidator(); 
+        //Valida e retorna true ou false
         try{ cpfValidator.assertValid(cpf); 
         return true; 
         }catch(Exception e){ 
@@ -18,9 +20,11 @@ public final class ValidaDoc {
             return false; 
         } 
     }
-
+    
+    //Teste de CNPJ
     public static boolean validaCnpj(String cnpj){
         CNPJValidator cnpjValidator = new CNPJValidator(); 
+        //Valida e retorna true ou false
         try{ cnpjValidator.assertValid(cnpj); 
         return true; 
         }catch(Exception e){ 
