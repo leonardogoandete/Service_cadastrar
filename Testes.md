@@ -233,5 +233,5 @@ Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e
 
 ## Observações
 Os testes podem ser executados em ambiente de teste.
-Os testes devem ser repetíveis, ou seja, podem ser executados várias vezes sem afetar uns aos outros ou executar separadamente
+Os testes devem ser repetíveis, ou seja, podem ser executados várias vezes sem afetar uns aos outros ou podem executar separadamente.
 Este plano de teste pode ser expandido conforme necessário para cobrir mais cenários de uso.
