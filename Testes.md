@@ -54,6 +54,7 @@ Descrição: Verificar se a classe ValidaEmail valida corretamente o email.
 Entrada:
 
 E-mail válido: "teste@gmail.com"
+
 E-mail inválido: "testegmail"
 
 Saída esperada: Para e-mail válido, o retorno deve ser verdadeiro. Para e-mail inválido, o retorno deve ser falso.
@@ -64,6 +65,7 @@ Descrição: Verificar se a classe ValidaEndereco valida corretamente o endereç
 Entrada:
 
 Endereço válido: "Av Nilo Pecanha 3539"
+
 Endereço inválido: "Av Nilo Pecanha 3539_1"
 
 Saída esperada: Para endereço válido, o retorno deve ser verdadeiro. Para endereço inválido, o retorno deve ser falso.
@@ -74,6 +76,7 @@ Descrição: Verificar se a classe ValidaNome valida corretamente o nome.
 Entrada:
 
 Nome válido: "Jose Alberto"
+
 Nomes inválidos: "Jose_Beto86""
 
 Saída esperada: Para nome válido, o retorno deve ser verdadeiro. Para nomes inválidos, o retorno deve ser falso.
@@ -84,9 +87,13 @@ Descrição: Verificar se o cadastro de pessoa jurídica é realizado com sucess
 Entrada:
 
 Documento: "55079581000190"
+
 Nome: "Hospital Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "hospitalteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 202 (ACCEPTED).
@@ -97,9 +104,13 @@ Descrição: Verificar se o sistema impede o cadastro de um CNPJ já existente e
 Entrada:
 
 Documento: "78322050000182" (CNPJ já existente)
+
 Nome: "Hospital Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "hospitalteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CNPJ existente".
@@ -110,9 +121,13 @@ Descrição: Verificar se o sistema impede a inserção de um CNPJ inválido.
 Entrada:
 
 Documento: "12345678901234" (CNPJ inválido)
+
 Nome: "Hospital Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "hospitalteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CNPJ inválido".
@@ -123,9 +138,13 @@ Descrição: Verificar se o sistema impede a inserção de um nome inválido par
 Entrada:
 
 Documento: "16707700000150"
+
 Nome: "Hospital Conceicao_14#" (nome inválido)
+
 Endereço: "Rua Teste 123"
+
 E-mail: "hospitalteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de nome inválido: use apenas letras".
@@ -136,9 +155,13 @@ Descrição: Verificar se o sistema impede a inserção de um endereço inválid
 Entrada:
 
 Documento: "03287472000165"
+
 Nome: "Hospital Teste"
+
 Endereço: "Rua Teste 1234*" (endereço inválido)
+
 E-mail: "hospitalteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de endereço inválido: use apenas letras e números".
@@ -149,9 +172,13 @@ Descrição: Verificar se o sistema impede a inserção de um e-mail inválido p
 Entrada:
 
 Documento: "50630504000163"
+
 Nome: "Hospital Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "hospitaltestehotmail.com" (e-mail inválido)
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de email inválido".
@@ -162,9 +189,13 @@ Descrição: Verificar se o cadastro de pessoa física é realizado com sucesso.
 Entrada:
 
 Documento: "70399622098"
+
 Nome: "Usuario Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "usuarioteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 202 (ACCEPTED).
@@ -175,9 +206,13 @@ Descrição: Verificar se o sistema impede o cadastro de um CPF já existente em
 Entrada:
 
 Documento: "18157310016" (CPF já existente)
+
 Nome: "Usuario Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "usuarioteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CPF existente".
@@ -188,9 +223,13 @@ Descrição: Verificar se o sistema impede a inserção de um CPF inválido.
 Entrada:
 
 Documento: "12345678901" (CPF inválido)
+
 Nome: "Usuario Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "usuarioteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CPF inválido".
@@ -201,9 +240,13 @@ Descrição: Verificar se o sistema impede a inserção de um nome inválido par
 Entrada:
 
 Documento: "60546547052"
+
 Nome: "Jose-Alberto20" (nome inválido)
+
 Endereço: "Rua Teste 123"
+
 E-mail: "usuarioteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de nome inválido: use apenas letras".
@@ -214,9 +257,13 @@ Descrição: Verificar se o sistema impede a inserção de um endereço inválid
 Entrada:
 
 Documento: "34761531002"
+
 Nome: "Usuario Teste"
+
 Endereço: "Rua Teste_8193" (endereço inválido)
+
 E-mail: "usuarioteste@hotmail.com"
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de endereço inválido: use apenas letras e números".
@@ -227,9 +274,13 @@ Descrição: Verificar se o sistema impede a inserção de um e-mail inválido p
 Entrada:
 
 Documento: "57157459000"
+
 Nome: "Usuario Teste"
+
 Endereço: "Rua Teste 123"
+
 E-mail: "usuariotestehotmail.com" (e-mail inválido)
+
 Senha: "123456"
 
 Saída esperada: O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de email inválido".
