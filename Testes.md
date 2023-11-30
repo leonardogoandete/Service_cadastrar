@@ -8,7 +8,7 @@ O arquivo de testes pode ser encontrado no caminho: src/test/java/cadastro/Cadas
 ## Teste 1: Verificar se a classe ValidaDoc é final
 Descrição: Verificar se a classe ValidaDoc é final, ou seja, não pode ser instanciada.
 
-` #0000ff `Entrada: `#000000`N/A
+#0000ff Entrada: #000000 N/A
 
 Saída esperada: A classe ValidaDoc deve ser final.
 
