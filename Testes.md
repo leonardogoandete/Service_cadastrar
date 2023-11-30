@@ -1,36 +1,36 @@
-#Plano de Teste - Cadastro
-##Objetivo
+# Plano de Teste - Cadastro
+## Objetivo
 O objetivo deste plano de teste é garantir a correta implementação e funcionamento do módulo de cadastro do sistema. Serão testados os validadores de documentos, e-mails, endereços e nomes, além do cadastro de pessoas físicas (PF) e pessoas jurídicas (PJ) no sistema.
 
-##Teste 1: Verificar se a classe ValidaDoc é final
+## Teste 1: Verificar se a classe ValidaDoc é final
 Descrição: Verificar se a classe ValidaDoc é final, ou seja, não pode ser instanciada.
 
 Entrada: N/A
 
 Saída esperada: A classe ValidaDoc deve ser final.
 
-##Teste 2: Verificar se a classe ValidaNome é final
+## Teste 2: Verificar se a classe ValidaNome é final
 Descrição: Verificar se a classe ValidaNome é final, ou seja, não pode ser instanciada.
 
 Entrada: N/A
 
 Saída esperada: A classe ValidaNome deve ser final.
 
-##Teste 3: Verificar se a classe ValidaEndereco é final
+## Teste 3: Verificar se a classe ValidaEndereco é final
 Descrição: Verificar se a classe ValidaEndereco é final, ou seja, não pode ser instanciada.
 
 Entrada: N/A
 
 Saída esperada: A classe ValidaEndereco deve ser final.
 
-##Teste 4: Verificar se a classe ValidaEmail é final
+## Teste 4: Verificar se a classe ValidaEmail é final
 Descrição: Verificar se a classe ValidaEmail é final, ou seja, não pode ser instanciada.
 
 Entrada: N/A
 
 Saída esperada: A classe ValidaEmail deve ser final.
 
-##Teste 5: Verificar se a classe ValidaDoc valida corretamente CPF e CNPJ
+## Teste 5: Verificar se a classe ValidaDoc valida corretamente CPF e CNPJ
 Descrição: Verificar se a classe ValidaDoc valida corretamente CPF e CNPJ.
 
 Entrada:
@@ -43,7 +43,7 @@ Saída esperada:
 
 Para CPF e CNPJ válidos, o retorno deve ser verdadeiro. Para CPF e CNPJ inválidos, o retorno deve ser falso.
 
-##Teste 6: Verificar se a classe ValidaEmail valida corretamente o email
+## Teste 6: Verificar se a classe ValidaEmail valida corretamente o email
 Descrição: Verificar se a classe ValidaEmail valida corretamente o email.
 
 Entrada:
@@ -54,7 +54,7 @@ Saída esperada:
 
 Para e-mail válido, o retorno deve ser verdadeiro. Para e-mail inválido, o retorno deve ser falso.
 
-##Teste 7: Verificar se a classe ValidaEndereco valida corretamente o endereço
+## Teste 7: Verificar se a classe ValidaEndereco valida corretamente o endereço
 Descrição: Verificar se a classe ValidaEndereco valida corretamente o endereço.
 
 Entrada:
@@ -65,7 +65,7 @@ Saída esperada:
 
 Para endereço válido, o retorno deve ser verdadeiro. Para endereço inválido, o retorno deve ser falso.
 
-##Teste 8: Verificar se a classe ValidaNome valida corretamente o nome
+## Teste 8: Verificar se a classe ValidaNome valida corretamente o nome
 Descrição: Verificar se a classe ValidaNome valida corretamente o nome.
 
 Entrada:
@@ -76,7 +76,7 @@ Saída esperada:
 
 Para nome válido, o retorno deve ser verdadeiro. Para nomes inválidos, o retorno deve ser falso.
 
-##Teste 9: Verificar o cadastro de PJ é realizado com sucesso
+## Teste 9: Verificar o cadastro de PJ é realizado com sucesso
 Descrição: Verificar se o cadastro de pessoa jurídica é realizado com sucesso.
 
 Entrada:
@@ -90,7 +90,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 202 (ACCEPTED).
 
-##Teste 10: Verificar CNPJ já existente em banco
+## Teste 10: Verificar CNPJ já existente em banco
 Descrição: Verificar se o sistema impede o cadastro de um CNPJ já existente em banco.
 
 Entrada:
@@ -104,7 +104,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CNPJ existente".
 
-##Teste 11: Verificar inserção de CNPJ inválido
+## Teste 11: Verificar inserção de CNPJ inválido
 Descrição: Verificar se o sistema impede a inserção de um CNPJ inválido.
 
 Entrada:
@@ -118,7 +118,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CNPJ inválido".
 
-##Teste 12: Verificar inserção de nome inválido na PJ
+## Teste 12: Verificar inserção de nome inválido na PJ
 Descrição: Verificar se o sistema impede a inserção de um nome inválido para pessoa jurídica.
 
 Entrada:
@@ -132,7 +132,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de nome inválido: use apenas letras".
 
-##Teste 13: Verificar inserção de endereço inválido na PJ
+## Teste 13: Verificar inserção de endereço inválido na PJ
 Descrição: Verificar se o sistema impede a inserção de um endereço inválido para pessoa jurídica.
 
 Entrada:
@@ -146,7 +146,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de endereço inválido: use apenas letras e números".
 
-##Teste 14: Verificar inserção de email inválido na PJ
+## Teste 14: Verificar inserção de email inválido na PJ
 Descrição: Verificar se o sistema impede a inserção de um e-mail inválido para pessoa jurídica.
 
 Entrada:
@@ -160,7 +160,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de email inválido".
 
-##Teste 15: Verificar o cadastro de PF é realizado com sucesso
+## Teste 15: Verificar o cadastro de PF é realizado com sucesso
 Descrição: Verificar se o cadastro de pessoa física é realizado com sucesso.
 
 Entrada:
@@ -174,7 +174,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 202 (ACCEPTED).
 
-##Teste 16: Verificar CPF já existente em banco
+## Teste 16: Verificar CPF já existente em banco
 Descrição: Verificar se o sistema impede o cadastro de um CPF já existente em banco.
 
 Entrada:
@@ -187,7 +187,7 @@ Senha: "123456"
 Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CPF existente".
-Teste 17: Verificar inserção de CPF inválido
+## Teste 17: Verificar inserção de CPF inválido
 Descrição: Verificar se o sistema impede a inserção de um CPF inválido.
 
 Entrada:
@@ -201,7 +201,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "CPF inválido".
 
-##Teste 18: Verificar inserção de nome inválido na PF
+## Teste 18: Verificar inserção de nome inválido na PF
 Descrição: Verificar se o sistema impede a inserção de um nome inválido para pessoa física.
 
 Entrada:
@@ -215,7 +215,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de nome inválido: use apenas letras".
 
-##Teste 19: Verificar inserção de endereço inválido na PF
+## Teste 19: Verificar inserção de endereço inválido na PF
 Descrição: Verificar se o sistema impede a inserção de um endereço inválido para pessoa física.
 
 Entrada:
@@ -229,7 +229,7 @@ Saída esperada:
 
 O código de status HTTP retornado deve ser 400 (BAD REQUEST) e a mensagem de erro deve ser "Formato de endereço inválido: use apenas letras e números".
 
-##Teste 20: Verificar inserção de email inválido na PF
+## Teste 20: Verificar inserção de email inválido na PF
 Descrição: Verificar se o sistema impede a inserção de um e-mail inválido para pessoa física.
 
 Entrada:
