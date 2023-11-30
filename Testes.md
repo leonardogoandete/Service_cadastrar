@@ -38,10 +38,13 @@ Descrição: Verificar se a classe ValidaDoc valida corretamente CPF e CNPJ.
 
 Entrada:
 
-CPF válido: "70399622098".
-CNPJ válido: "78322050000182".
-CPF inválido: "12345678901".
-CNPJ inválido: "12345678901234".
+CPF válido: "70399622098"
+
+CNPJ válido: "78322050000182"
+
+CPF inválido: "12345678901"
+
+CNPJ inválido: "12345678901234"
 
 Saída esperada: Para CPF e CNPJ válidos, o retorno deve ser verdadeiro. Para CPF e CNPJ inválidos, o retorno deve ser falso.
 
