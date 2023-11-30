@@ -118,7 +118,7 @@ public class CadastroTest{
         //Retorno válido de email
         assertEquals(true, ValidaEmail.validarEmail("teste@gmail.com"));
         //Retorno inválido de email
-        assertEquals(false, ValidaEmail.validarEmail("teste468413.´d-"));
+        assertEquals(false, ValidaEmail.validarEmail("testegmail"));
     }
     
     //Teste - 7 - Verifica se a classe ValidaEndereco valida corretamente o endereço
@@ -128,7 +128,7 @@ public class CadastroTest{
         //Retorno válido de endereço
         assertEquals(true, ValidaEndereco.validarEndereco("Av Nilo Pecanha 3539"));
         //Retorno inválido de endereço
-        assertEquals(false, ValidaEndereco.validarEndereco("Av Nilo Pecanha *#4_"));
+        assertEquals(false, ValidaEndereco.validarEndereco("Av Nilo Pecanha 3539_1"));
     }
     
     //Teste - 8 - Verifica se a classe ValidaNome valida corretamente o nome
@@ -139,7 +139,7 @@ public class CadastroTest{
         assertEquals(true, ValidaNome.validarNome("Jose Alberto"));
         //Retorno inválido de nome
         assertEquals(false, ValidaNome.validarNome(""));
-        assertEquals(false, ValidaNome.validarNome("*******"));
+        assertEquals(false, ValidaNome.validarNome("Jose_Beto86"));
     }
     
     //VALIDAÇÕES DE PJ
