@@ -2,7 +2,7 @@
 ## Objetivo
 O objetivo deste plano de teste é garantir a correta implementação e funcionamento do módulo de cadastro do sistema. Serão testados os validadores de documentos, e-mails, endereços e nomes, além do cadastro de pessoas físicas (PF) e pessoas jurídicas (PJ) no sistema.
 
-## Localização
+## Localização /
 O arquivo de testes pode ser encontrado no caminho: src/test/java/cadastro/CadastroTest.java
 
 ## Teste 1: Verificar se a classe ValidaDoc é final
