@@ -44,6 +44,10 @@ jobs:
         with:
           node-version: 18
 
+      - name: install Cypress
+        run: |
+          npm install cypress --save-dev
+
       - name: Checkout DoaSangueLogin
         uses: actions/checkout@v4.1.1
         with:
@@ -64,12 +68,12 @@ jobs:
 
       - name: Run Cypress chrome
         run: |
-          cd doasanguepoa
-          npx cypress run --browser chrome --spec "cypress/e2e/teste-instituicao.cy.js"
+          cd service_cadastrar
+          npx cypress run --browser chrome --spec "cypress/e2e/cadastro.cy.js"
           cd ..
 
       - name: Run Cypress firefox
         run: |
-          cd doasanguepoa
-          npx cypress run --browser firefox --spec "cypress/e2e/teste-instituicao.cy.js"
+          cd service_cadastrar
+          npx cypress run --browser firefox --spec "cypress/e2e/cadastro.cy.js"
           cd ..
