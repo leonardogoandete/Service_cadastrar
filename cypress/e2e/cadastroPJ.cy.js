@@ -2,7 +2,6 @@ import faker from 'faker-br';
 
 describe('template spec', () => {
   it('passes', () => {
-    const dadosSimulados = cy.dadosSimulados();
     cy.visit('https://doasanguepoa-402142fbc80f.herokuapp.com/cadastro/usuario')
     cy.get(':nth-child(1) > .campo').clear().type('Hospital Conceicao');
     cy.get(':nth-child(2) > .campo').clear().type('Av Francisco Trein Filho 496');
