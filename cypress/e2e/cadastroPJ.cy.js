@@ -6,9 +6,9 @@ describe('template spec', () => {
     cy.visit('https://doasanguepoa-402142fbc80f.herokuapp.com/cadastro/usuario')
     cy.get(':nth-child(1) > .campo').clear().type('Hospital Conceicao');
     cy.get(':nth-child(2) > .campo').clear().type('Av Francisco Trein Filho 496');
-    const cnpj = dadosSimulados.cnpj;
+    const cnpj = faker.br.cnpj();
     cy.get(':nth-child(3) > .campo').click().clear().type(cnpj);
-    const email = dadosSimulados.email;
+    const email = faker.internet.email();
     cy.get(':nth-child(4) > .campo').clear().type(email);
     cy.get(':nth-child(5) > .campo').clear().type('123456789');
     cy.get('.Login-Btn').click();
