@@ -11,6 +11,7 @@ describe('template spec', () => {
     cy.get(':nth-child(3) > .campo').click().clear().type('22936441000132');
     cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
     cy.get(':nth-child(5) > .campo').clear().type('123456789');
+    cy.get('.Login-Btn').click();
     cy.on('uncaught:exception', (err) => {
       if (err.message.includes('Cannot read properties of undefined (reading \'length\')')) {
         // Log the error message for debugging purposes
@@ -41,7 +42,7 @@ describe('template spec', () => {
     cy.intercept('(xhr)POST 400 https://cadastro-service-3070739dd5e5.herokuapp.com/registrar/instituicao');
     /* ==== End Cypress Studio ==== */
     /* ==== Generated with Cypress Studio ==== */
-    cy.get('.Login-Btn').click();
+    
     /* ==== End Cypress Studio ==== */
   })
 })
