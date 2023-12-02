@@ -47,6 +47,7 @@ jobs:
       - name: install Cypress
         run: |
           npm install cypress --save-dev
+          npm install faker-br
 
       - name: Checkout DoaSangueLogin
         uses: actions/checkout@v4.1.1
