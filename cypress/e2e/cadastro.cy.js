@@ -1,5 +1,16 @@
 describe('template spec', () => {
   it('passes', () => {
+    cy.visit('https://doasanguepoa-402142fbc80f.herokuapp.com/cadastro/usuario')
+
+    /* ==== Generated with Cypress Studio ==== */
+
+    /* ==== End Cypress Studio ==== */
+    /* ==== Generated with Cypress Studio ==== */
+    cy.get(':nth-child(1) > .campo').clear().type('Hospital Conceicao');
+    cy.get(':nth-child(2) > .campo').clear().type('Av Francisco Trein Filho 496');
+    cy.get(':nth-child(3) > .campo').click().clear().type('22936441000132');
+    cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
+    cy.get(':nth-child(5) > .campo').clear().type('123456789');
     Cypress.Commands.add('disableDefaultErrorReporting', () => {
       cy.on('uncaught:exception', (err) => {
         // Check if the error message indicates the specific behavior you want to disable
@@ -15,17 +26,6 @@ describe('template spec', () => {
         }
       });
     });
-    cy.visit('https://doasanguepoa-402142fbc80f.herokuapp.com/cadastro/usuario')
-
-    /* ==== Generated with Cypress Studio ==== */
-
-    /* ==== End Cypress Studio ==== */
-    /* ==== Generated with Cypress Studio ==== */
-    cy.get(':nth-child(1) > .campo').clear().type('Hospital Conceicao');
-    cy.get(':nth-child(2) > .campo').clear().type('Av Francisco Trein Filho 496');
-    cy.get(':nth-child(3) > .campo').click().clear().type('22936441000132');
-    cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
-    cy.get(':nth-child(5) > .campo').clear().type('123456789');
     cy.on('uncaught:exception', (err) => {
       if (err.message.includes('values.documento is undefined')) {
         return false;
