@@ -47,8 +47,8 @@ jobs:
       - name: Checkout DoaSangueLogin
         uses: actions/checkout@v4.1.1
         with:
-          repository: EnzoGRodrigues/DoaSangueLogin
-          path: doasanguelogin
+          repository: LEO-SF/Service_cadastrar
+          path: service_cadastrar
 
       - name: wait for services to start
         run: |
