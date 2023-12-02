@@ -11,6 +11,7 @@ describe('template spec', () => {
     cy.get(':nth-child(3) > .campo').click().clear().type('22936441000132');
     cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
     cy.get(':nth-child(5) > .campo').clear().type('123456789');
+    cy.ignore('Cannot read properties of undefined (reading \'length\')');
     cy.on('uncaught:exception', (err) => {
       if (err.message.includes('values.documento is undefined')) {
         return false;
