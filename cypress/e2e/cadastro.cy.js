@@ -12,7 +12,7 @@ describe('template spec', () => {
     cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
     cy.get(':nth-child(5) > .campo').clear().type('123456789');
     cy.get('.Login-Btn').click();
-    cy.on('uncaught:exception', (err) => {
+    /* cy.on('uncaught:exception', (err) => {
       if (err.message.includes('Cannot read properties of undefined (reading \'length\')')) {
         // Log the error message for debugging purposes
         console.error('Ignoring error:', err.message);
@@ -43,6 +43,6 @@ describe('template spec', () => {
     /* ==== End Cypress Studio ==== */
     /* ==== Generated with Cypress Studio ==== */
     
-    /* ==== End Cypress Studio ==== */
+    /* ==== End Cypress Studio ==== */ 
   })
 })
