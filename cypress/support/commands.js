@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import faker from 'faker-br';
+Cypress.Commands.add('dadosSimulados', () => {
+    Cypress.log({ name: 'dadosSimulados' });
+    const cnpj = faker.br.cnpj();
+    const email = faker.internet.email();
+    const cpf = faker.br.cpf();
+    return { cnpj, email, cpf };
+})
+
