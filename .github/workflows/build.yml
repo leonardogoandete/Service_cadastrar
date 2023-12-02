@@ -69,11 +69,11 @@ jobs:
       - name: Run Cypress chrome
         run: |
           cd service_cadastrar
-          npx cypress run --browser chrome --spec "cypress/e2e/cadastro.cy.js"
+          npx cypress run --browser chrome
           cd ..
 
       - name: Run Cypress firefox
         run: |
           cd service_cadastrar
-          npx cypress run --browser firefox --spec "cypress/e2e/cadastro.cy.js"
+          npx cypress run --browser firefox
           cd ..
