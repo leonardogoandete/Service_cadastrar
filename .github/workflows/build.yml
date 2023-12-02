@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
+  sonarlint:
     name: Build and analyze
     runs-on: ubuntu-latest
     steps:
@@ -35,3 +35,86 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=LEO-SF_Service_cadastrar
+  test-cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3.13.0
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+
+      - name: Set up Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Checkout postagens
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: leonardogoandete/postagens
+          path: postagens
+          ref: 'v1.1.0'
+
+      - name: Run Postagens
+        run: |
+          cd postagens
+          ./mvnw compile quarkus:dev &
+          cd ..
+          
+      - name: Checkout DoaSangueLogin
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: EnzoGRodrigues/DoaSangueLogin
+          path: doasanguelogin
+
+      - name: Run DoaSangueLogin
+        run: |
+          cd doasanguelogin
+          ./mvnw compile quarkus:dev &
+          cd ..
+
+      - name: Checkout Service_cadastrar
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: LEO-SF/Service_cadastrar
+          path: service_cadastrar
+
+      - name: Run Service_cadastrar
+        run: |
+          cd service_cadastrar
+          ./mvnw compile quarkus:dev &
+          cd ..
+          
+      - name: Checkout DoaSanguePoa
+        uses: actions/checkout@v4.1.1
+        with:
+          repository: leonardogoandete/doasanguepoa
+          path: doasanguepoa
+          
+      - name: wait for services to start
+        run: |
+          sleep 20
+          
+      - name: Listar files
+        run: |
+          ls -la
+        
+      - name: Run DoaSanguePoa
+        run: |
+          cd doasanguepoa
+          npm install
+          npm start &
+          cd ..
+      
+      - name: Run Cypress chrome
+        run: |
+          cd doasanguepoa
+          npx cypress run --browser chrome --spec "cypress/e2e/teste-instituicao.cy.js"
+          cd ..
+          
+      - name: Run Cypress firefox
+        run: |
+          cd doasanguepoa
+          npx cypress run --browser firefox --spec "cypress/e2e/teste-instituicao.cy.js"
+          cd ..
