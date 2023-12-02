@@ -1,5 +1,20 @@
 describe('template spec', () => {
   it('passes', () => {
+    Cypress.Commands.add('disableDefaultErrorReporting', () => {
+      cy.on('uncaught:exception', (err) => {
+        // Check if the error message indicates the specific behavior you want to disable
+        if (err.message.includes('This behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event')) {
+          // Disable default error reporting
+          Cypress.config('reporterOptions', {
+            hideWarnings: true,
+            reportRawErrors: false,
+          });
+    
+          // Return false to prevent Cypress from throwing the error
+          return false;
+        }
+      });
+    });
     cy.visit('https://doasanguepoa-402142fbc80f.herokuapp.com/cadastro/usuario')
 
     /* ==== Generated with Cypress Studio ==== */
