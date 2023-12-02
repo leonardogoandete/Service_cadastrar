@@ -8,8 +8,10 @@ describe('template spec', () => {
     /* ==== Generated with Cypress Studio ==== */
     cy.get(':nth-child(1) > .campo').clear().type('Hospital Conceicao');
     cy.get(':nth-child(2) > .campo').clear().type('Av Francisco Trein Filho 496');
-    cy.get(':nth-child(3) > .campo').click().clear().type('22936441000132');
-    cy.get(':nth-child(4) > .campo').clear().type('hospitalconceicao03@gmail.com');
+    const cnpj = cy.faker.br.cnpj();
+    cy.get(':nth-child(3) > .campo').click().clear().type(cnpj);
+    const email = cy.faker.internet.email();
+    cy.get(':nth-child(4) > .campo').clear().type(email);
     cy.get(':nth-child(5) > .campo').clear().type('123456789');
     cy.get('.Login-Btn').click();
     /* cy.on('uncaught:exception', (err) => {
