@@ -247,7 +247,7 @@ public class CadastroTest{
             .statusCode(Response.Status.BAD_REQUEST.getStatusCode())
             .body("error", is("Formato de nome inválido: use apenas letras"));
     }
-    //
+    
     //Teste - 13 - Verifica a inserção de um endereço inválido - apenas letras e números
     @Test
     @Order(13)
