@@ -109,6 +109,7 @@ public class Cadastro {
         }
         
         //Retorna a mensagem de sucesso
+        logger.log(Level.INFO,"Cadastro Realizado");
         return Response.status(Response.Status.ACCEPTED).entity("Cadastro Realizado").build();
     }
     
@@ -194,6 +195,7 @@ public class Cadastro {
         }
         
         //Retorna a mensagem de sucesso
+        logger.log(Level.INFO,"Cadastro Realizado");
         return Response.status(Response.Status.ACCEPTED).entity("Cadastro Realizado").build();
     }
     

@@ -8,6 +8,7 @@ import lombok.*;
 
 @Entity
 @Data
+@Table(name = "cadastro")
 public class Cadastro{
 
     @Id
