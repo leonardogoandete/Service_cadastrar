@@ -1,9 +1,9 @@
 -- Drop existing tables if they exist
-DROP TABLE IF EXISTS Cadastro;
-DROP TABLE IF EXISTS Cadastro_SEQ;
+DROP TABLE IF EXISTS cadastro;
+DROP TABLE IF EXISTS cadastro_SEQ;
 
--- Create Cadastro table
-CREATE TABLE IF NOT EXISTS Cadastro (
+-- Create cadastro table
+CREATE TABLE IF NOT EXISTS cadastro (
     id BIGINT NOT NULL AUTO_INCREMENT,
     DTYPE VARCHAR(31) NOT NULL,
     cnpj VARCHAR(255),
@@ -16,10 +16,10 @@ CREATE TABLE IF NOT EXISTS Cadastro (
     PRIMARY KEY (id)
 );
 
--- Create Cadastro_SEQ table
-CREATE TABLE Cadastro_SEQ (
+-- Create cadastro_SEQ table
+CREATE TABLE cadastro_SEQ (
     next_val BIGINT
 );
 
--- Insert initial value into Cadastro_SEQ
-INSERT INTO Cadastro_SEQ VALUES (1);
+-- Insert initial value into cadastro_SEQ
+INSERT INTO cadastro_SEQ VALUES (1);
